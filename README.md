@@ -34,7 +34,6 @@ Before running the application, ensure you have the following installed:
 
 * Docker
 
-* A basic understanding of Spring Boot
 
 ## Getting Started
 

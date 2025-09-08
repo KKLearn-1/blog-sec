@@ -1,76 +1,116 @@
-# Blog Platform API
+## Blog Platform with Spring Boot
 
 This project is a comprehensive backend API for a blog platform, featuring robust content management capabilities. The API handles all core functionalities for content management, allowing for seamless integration with any frontend application.
 
+-----
+
 ## Features
 
-* **Content Organization:** A category system for organizing posts and a flexible tagging system that supports multiple tags per post.
+  * **Comprehensive Content Management**: Implements full **CRUD** (Create, Read, Update, Delete) functionality for posts, categories, and tags.
+  * **Post States**: Supports both **draft** and **published** states for posts, with drafts accessible only to authenticated users.
+  * **Filtering**: Allows clients to filter posts by categories or tags.
+  * **Security**: Uses **Spring Security** to handle **JWT authentication**.
 
-* **Post Management:** Functionality for creating posts, with support for both `draft` and `published` states.
-
-* **Filtering:** Allows clients to filter blog posts by both categories and tags.
-
-* **Post Deletion:** An implemented endpoint and service layer support for deleting posts.
+-----
 
 ## Technologies Used
 
-* **Java & Spring Boot:** Used for building the backend API.
+  * **Java & Spring Boot**: The core framework for the backend API.
+  * **Spring Security**: Used for implementing robust authentication and authorization.
+  * **Project Lombok**: A library to reduce boilerplate code.
+  * **MapStruct**: Used for object mapping.
+  * **PostgreSQL**: The relational database for data persistence.
+  * **Docker**: Simplifies the database setup and ensures a consistent development environment.
 
-* **Maven:** For project dependency management and build automation.
-
-* **PostgreSQL:** An open-source relational database for data persistence.
-
-* **Docker:** To simplify database setup and ensure a consistent development environment.
-
-## Getting Started
-
-Follow these steps to set up the backend application on your local machine.
+-----
 
 ### Prerequisites
 
-Before you begin, make sure you have the following installed:
+  * **Java Development Kit (JDK) 21** or later
+  * **Docker**
+  * An **IDE** (IntelliJ, Eclipse, or Visual Studio Code)
 
-* Java Development Kit (JDK)
+### Running the Application
 
-* Docker
+1.  **Clone the Repository**:
 
-### 1. Clone the repository
+    ```
+    git clone <repository_url>
+    cd <repository_folder>
+    ```
 
-Start by cloning the project repository to your local machine.
+2.  **Configure Database**:
+    Use Docker to start the PostgreSQL database container.
 
-```
+    ```
+    docker-compose up
+    ```
 
-git clone \<repository\_url\>
-cd \<repository\_folder\>
+3.  **Run the Application**:
+    You can build and run the application using Maven.
 
-```
+    ```
+    ./mvnw clean install
+    ```
 
-### 2. Configure the database
+-----
 
-The project uses a `docker-compose.yml` file to set up the PostgreSQL database. Run the following command in the terminal to start the database container:
+## API Endpoints
 
-```
+The application provides the following key endpoints for content management:
 
-docker-compose up
+### Posts
 
-```
+| HTTP Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/posts` | Retrieves all posts. Supports filtering by categories and tags. |
+| `GET` | `/api/posts/{id}` | Retrieves a single post by its ID. |
+| `POST` | `/api/posts` | Creates a new post. |
+| `PUT` | `/api/posts/{id}` | Updates an existing post by its ID. |
+| `DELETE` | `/api/posts/{id}` | Deletes a post by its ID. |
 
-### 3. Run the Application
+### Categories
 
-You can build and run the backend using the Maven wrapper or your preferred IDE.
+| HTTP Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/categories` | Retrieves all categories. |
+| `GET` | `/api/categories/{id}` | Retrieves a single category by its ID. |
+| `POST` | `/api/categories` | Creates a new category. |
+| `PUT` | `/api/categories/{id}` | Updates an existing category by its ID. |
+| `DELETE` | `/api/categories/{id}` | Deletes a category by its ID. |
 
-* **Using the Maven Wrapper:** Run `./mvnw clean install` in your terminal to build the project. Then you can run the application.
+### Tags
 
-* **Using an IDE:** Import the project into your IDE by selecting the `pom.xml` file. Locate the main application class and run it directly.
+| HTTP Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/tags` | Retrieves all tags. |
+| `GET` | `/api/tags/{id}` | Retrieves a single tag by its ID. |
+| `POST` | `/api/tags` | Creates a new tag. |
+| `PUT` | `/api/tags/{id}` | Updates an existing tag by its ID. |
+| `DELETE` | `/api/tags/{id}` | Deletes a tag by its ID. |
 
-Once the backend is running, it will be accessible at `http://localhost:8080`.
+### Comments
+
+| HTTP Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/posts/{postId}/comments` | Retrieves all comments for a specific post. |
+| `GET` | `/api/posts/{postId}/comments/{commentId}` | Retrieves a single comment by its ID from a specific post. |
+| `POST` | `/api/posts/{postId}/comments` | Creates a new comment for a post. |
+| `PUT` | `/api/posts/{postId}/comments/{commentId}` | Updates a comment for a post. |
+| `DELETE` | `/api/posts/{postId}/comments/{commentId}` | Deletes a comment from a post. |
+
+### Authentication
+
+| HTTP Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/auth/login` | Authenticates a user and issues a JWT token. |
+
+-----
 
 ## Next Steps and Future Improvements
 
-This project provides a solid foundation for a blog platform. Here are some areas that could be improved upon in the future:
+The areas for further improvement:
 
-* **Security:** Enhance the authentication system with refresh tokens and add CSRF protection to prevent cross-site request forgery attacks.
-
-* **User Experience:** Improve the user experience with better error messages and more comprehensive validation.
-
-* **Performance:** Add comprehensive tests, optimize database queries for better performance, and refine existing features.
+  * **Security**: Enhance authentication with **refresh tokens** and add **CSRF protection**.
+  * **User Experience**: Improve front-end **validation** and provide more comprehensive **error messages**.
+  * **Performance**: Write comprehensive **unit tests** and optimize **database queries** for better performance.

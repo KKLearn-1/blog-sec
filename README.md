@@ -35,8 +35,7 @@ This project is a comprehensive backend API for a blog platform, featuring robus
 1.  **Clone the Repository**:
 
     ```
-    git clone <repository_url>
-    cd <repository_folder>
+    git clone https://github.com/KKLearn-1/blog-sec.git
     ```
 
 2.  **Configure Database**:

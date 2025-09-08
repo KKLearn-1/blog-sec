@@ -102,7 +102,7 @@ The application provides the following key endpoints for content management:
 
 | HTTP Method | Endpoint | Description |
 | :--- | :--- | :--- |
-| `POST` | `/api/auth/login` | Authenticates a user and issues a JWT token. Due to the scope of the project the only available username and password is user@test.com and password, respectively. |
+| `POST` | `/api/auth/login` | Authenticates a user and issues a JWT token. Due to the scope of the project, the only available username and password is user@test.com and password, respectively. |
 
 -----
 

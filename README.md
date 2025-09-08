@@ -1,90 +1,76 @@
-# Task-Tracking Backend API
+# Blog Platform API
 
-This project is a robust backend API for a task-tracking application, developed using Java and the Spring Boot framework. The API handles all core functionalities, including task creation, management, and data persistence with a PostgreSQL database.
-
-This repository focuses exclusively on the backend. The corresponding React frontend is available separately.
+This project is a comprehensive backend API for a blog platform, featuring robust content management capabilities. The API handles all core functionalities for content management, allowing for seamless integration with any frontend application.
 
 ## Features
 
-* **Comprehensive REST API:** Full implementation of all necessary API endpoints for a task-tracking application.
+* **Content Organization:** A category system for organizing posts and a flexible tagging system that supports multiple tags per post.
 
-* **Database Integration:** Utilizes a PostgreSQL database for reliable data storage.
+* **Post Management:** Functionality for creating posts, with support for both `draft` and `published` states.
 
-* **Error Handling:** Robust error handling mechanisms to ensure a stable and reliable application.
+* **Filtering:** Allows clients to filter blog posts by both categories and tags.
 
-* **Transactional Support:** Implements database transactions to maintain data integrity.
+* **Post Deletion:** An implemented endpoint and service layer support for deleting posts.
 
 ## Technologies Used
 
-* **Java:** The primary programming language for the application.
+* **Java & Spring Boot:** Used for building the backend API.
 
-* **Spring Boot:** A powerful framework for building production-grade, stand-alone, and Spring-based applications.
+* **Maven:** For project dependency management and build automation.
 
-* **Maven:** A build automation tool used for project management and dependency management.
+* **PostgreSQL:** An open-source relational database for data persistence.
 
-* **PostgreSQL:** An open-source relational database used for data storage.
-
-* **Docker:** Used to containerize the database for easy setup and development environment consistency.
-
-## Prerequisites
-
-Before running the application, ensure you have the following installed:
-
-* Java (JDK)
-
-* Docker
-
+* **Docker:** To simplify database setup and ensure a consistent development environment.
 
 ## Getting Started
 
-Follow these steps to get the backend API up and running on your local machine.
+Follow these steps to set up the backend application on your local machine.
+
+### Prerequisites
+
+Before you begin, make sure you have the following installed:
+
+* Java Development Kit (JDK)
+
+* Docker
 
 ### 1. Clone the repository
+
+Start by cloning the project repository to your local machine.
+
 ```
-git clone <repository_url>
-cd <repository_folder>
+
+git clone \<repository\_url\>
+cd \<repository\_folder\>
+
 ```
+
 ### 2. Configure the database
 
-With the `docker-compose.yml` file already set up, simply run the following command to start the PostgreSQL database in a Docker container:
+The project uses a `docker-compose.yml` file to set up the PostgreSQL database. Run the following command in the terminal to start the database container:
+
 ```
+
 docker-compose up
+
 ```
-### 3. Running the Application
 
-You can run the Spring Boot application using one of the following methods:
+### 3. Run the Application
 
-#### a) Using an IDE
+You can build and run the backend using the Maven wrapper or your preferred IDE.
 
-Most modern Java IDEs have excellent support for Spring Boot and Maven projects.
+* **Using the Maven Wrapper:** Run `./mvnw clean install` in your terminal to build the project. Then you can run the application.
 
-1. **Import the Project:** Open your preferred IDE (e.g., IntelliJ IDEA, VS Code, Eclipse) and select the option to "Import Project" or "Open" an existing project.
+* **Using an IDE:** Import the project into your IDE by selecting the `pom.xml` file. Locate the main application class and run it directly.
 
-2. **Select the `pom.xml`:** Navigate to the project's root directory and select the `pom.xml` file. The IDE will automatically recognize it as a Maven project and configure all dependencies.
+Once the backend is running, it will be accessible at `http://localhost:8080`.
 
-3. **Run the Main Class:** Locate the main application class (usually named `Application.java` or similar) and run it. Most IDEs provide a convenient "Run" button or context menu option for this.
+## Next Steps and Future Improvements
 
-#### b) Using the Maven Wrapper
+This project provides a solid foundation for a blog platform. Here are some areas that could be improved upon in the future:
 
-The project includes a Maven wrapper (`./mvnw`), so you don't need to have Maven installed globally. Navigate to the project's root directory and run the following command to build the project:
-```
-./mvnw clean install
-```
-Once the application is running, you can interact with and test the various API endpoints using a REST client like Postman or Insomnia. The API is accessible at `http://localhost:8080`.
+* **Security:** Enhance the authentication system with refresh tokens and add CSRF protection to prevent cross-site request forgery attacks.
 
-## API Endpoints
+* **User Experience:** Improve the user experience with better error messages and more comprehensive validation.
 
-The following endpoints are available for interacting with the task-tracking application.
-
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| GET | `/task-lists` | List all task lists |
-| POST | `/task-lists` | Create a new task list |
-| GET | `/task-lists/{task_list_id}` | Get a task list by its ID |
-| PUT | `/task-lists/{task_list_id}` | Update a task list |
-| DELETE | `/task-lists/{task_list_id}` | Delete a task list |
-| GET | `/task-lists/{task_list_id}/tasks` | List all tasks within a specific task list |
-| POST | `/task-lists/{task_list_id}/tasks` | Create a new task within a specific task list |
-| GET | `/task-lists/{task_list_id}/tasks/{task_id}` | Get a specific task by ID |
-| PUT | `/task-lists/{task_list_id}/tasks/{task_id}` | Update a specific task |
-| DELETE | `/task-lists/{task_list_id}/tasks/{task_id}` | Delete a specific task |
+* **Performance:** Add comprehensive tests, optimize database queries for better performance, and refine existing features.
